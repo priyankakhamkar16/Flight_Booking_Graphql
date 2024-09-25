@@ -6,7 +6,7 @@ import BookingForm from './components/BookingForm';
 import BookingsList from './components/BookingsList';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:5000/graphql',
+  uri: 'https://flight-booking-graphql.vercel.app/graphql',
   cache: new InMemoryCache(),
 });
 
