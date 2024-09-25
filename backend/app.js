@@ -10,9 +10,9 @@ dotenv.config();
 
 const app = express();
 
-// Enable CORS for all routes, specifically allowing requests from the frontend (localhost:3000)
+// Enable CORS for all routes (Allow any origin for deployment)
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: process.env.FRONTEND_URL || '*', // Change to your frontend URL after deploying
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 }));
@@ -32,12 +32,12 @@ async function startServer() {
   mongoose.connect(process.env.MONGO_URI)
     .then(() => {
       console.log('Connected to MongoDB');
-      app.listen(5000, () => {
-        console.log('Server is running on port 5000');
+      app.listen(process.env.PORT || 5000, () => { // Use PORT from environment variable for Vercel
+        console.log(`Server is running on port ${process.env.PORT || 5000}`);
       });
     })
     .catch(err => {
-      console.log(err);
+      console.error('MongoDB connection error:', err);
     });
 }
 
