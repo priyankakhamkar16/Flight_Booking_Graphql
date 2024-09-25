@@ -135,17 +135,17 @@ const BookingForm = () => {
 
         <h3>Emergency Contact</h3>
         <div>
-          <label>Emergency Contact First Name:</label>
+          <label>First Name:</label>
           <input type="text" name="emergencyContact.firstName" value={formData.emergencyContact.firstName} onChange={handleChange} required />
         </div>
 
         <div>
-          <label>Emergency Contact Last Name:</label>
+          <label>Last Name:</label>
           <input type="text" name="emergencyContact.lastName" value={formData.emergencyContact.lastName} onChange={handleChange} required />
         </div>
 
         <div>
-          <label>Emergency Contact Number:</label>
+          <label>Contact Number:</label>
           <input type="tel" name="emergencyContact.contactNumber" value={formData.emergencyContact.contactNumber} onChange={handleChange} required />
         </div>
 
