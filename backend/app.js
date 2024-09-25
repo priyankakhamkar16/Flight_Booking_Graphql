@@ -18,21 +18,22 @@ app.use(cors({
 }));
 
 // Create an instance of ApolloServer
-const server = new ApolloServer({
-  typeDefs: bookingSchema,
-  resolvers: bookingResolver,
-});
-
-// Start the Apollo server
 async function startServer() {
+  const server = new ApolloServer({
+    typeDefs: bookingSchema,
+    resolvers: bookingResolver,
+    introspection: true, // Enable introspection to allow Playground in production
+    playground: true,    // Enable the Playground on production
+  });
+
   await server.start(); // Wait for the server to start
-  server.applyMiddleware({ app }); // Apply middleware to the Express app
+  server.applyMiddleware({ app, path: '/graphql' }); // Apply middleware to the Express app
 
   // Connect to MongoDB
-  mongoose.connect(process.env.MONGO_URI)
+  mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
       console.log('Connected to MongoDB');
-      app.listen(process.env.PORT || 5000, () => { // Use PORT from environment variable for Vercel
+      app.listen(process.env.PORT || 5000, () => {
         console.log(`Server is running on port ${process.env.PORT || 5000}`);
       });
     })
@@ -43,3 +44,7 @@ async function startServer() {
 
 // Call the function to start the server
 startServer();
+
+app.get('/', (req, res) => {
+  res.send('Flight Booking GraphQL Backend is running!');
+});
