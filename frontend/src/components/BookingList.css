@@ -1,0 +1,62 @@
+/* src/styles/BookingsList.css */
+.table-container {
+    width: 90%;
+    margin: 40px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  thead {
+    background-color: #17a2b8;
+    color: white;
+  }
+  
+  thead th {
+    padding: 12px;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: left;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  tbody tr:hover {
+    background-color: #e0e0e0;
+    transition: background-color 0.3s ease;
+  }
+  
+  tbody td {
+    padding: 12px;
+    font-size: 15px;
+    text-align: left;
+  }
+  
+  tbody td:first-child {
+    font-weight: bold;
+  }
+  
+  tbody tr td {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+  
